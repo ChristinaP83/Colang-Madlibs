@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<style>
+   body mark {
+       background-color: yellow;
+   }
+</style>
+<head>
+   <meta charset="UTF-8">
+   <title>Madlibs</title>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <!--<script>
+        var password = "tutorial";
+        (function passcodeprotect() {
+           var passcode = prompt("Enter PassCode");
+           while (passcode !== password) {
+              alert("Incorrect PassCode");
+              return passcodeprotect();
+           }
+        }());
+        alert('Welcome!');
+     </script>-->
+</head>
+
+
+<body>
+<br>
+<section class="blog-list px-3 py-5 p-md-5">
+          <div class="container">
+           <p>How to play: Madlibs is a template word game created by Leonard Stern and Roger Price. You will be given prompts
+           for a list of words that will be substituted in blanks in a story. Fill in the blanks to reveal the story!</p>
+               <h1 class="text-center font-weight-bold" style="font-size:36px;">Madlibs </h1>
+          </div>
+</section>
+   <div class="container">
+
+
+     <!-- start form -->
+     <div id="questions">
+       <h1>Please fill out the following!</h1>
+       <hr>
+       <form role="form">
+         <div class="form-group">
+           <label for="noun">Noun</label>
+           <input id="noun" class="form-control noun" type="text" placeholder="Enter a noun ...">
+         </div>
+         <div class="form-group">
+           <label for="color">Color</label>
+           <input id="color" class="form-control color" type="text" placeholder="Enter a color ...">
+         </div>
+         <div class="form-group">
+           <label for="timeofday">Time of day</label>
+           <input id="timeofday" class="form-control timeofday" type="text" placeholder="Enter a time of day ...">
+         </div>
+         <div class="form-group">
+           <label for="animal">Animal</label>
+           <input id="animal" class="form-control animal" type="text" placeholder="Enter an animal ...">
+         </div>
+         <div class="form-group">
+           <label for="animal2">Another Animal</label>
+           <input id="animal2" class="form-control animal2" type="text" placeholder="Enter another animal ...">
+         </div>
+           <div class="form-group">
+           <label for="adjective">Adjective</label>
+           <input id="adjective" class="form-control adjective" type="text" placeholder="Enter an adjective ...">
+         </div>
+         <div>
+         </div>
+       </form>
+       <button id="btn-click" type="submit" class="btn btn-primary btn-lg">Generate!</button>
+       <hr>
+     </div>
+     <!-- end form -->
+
+
+     <!-- start story -->
+     <div id="story">
+       <hr>
+             <h4>Once upon a time there was a gila monster who lived in a <mark><span class="noun"></span></mark>under a </mark> <mark><span class="color"></span></mark> cactus. Every
+                 <mark><span class="timeofday"></span></mark> he would go out to hunt. His favorite thing to eat was <mark><span class="animal"></span></mark> eggs, but sometimes he would eat a/an <mark><span class="animal2"></span></mark>. He ran fast, low to the ground on his
+                 <mark><span class="adjective"></span></mark> legs until he captured his meal!.
+           </h4>
+
+
+         <div>
+         <button type="submit" class="btn btn-primary btn-lg" id="play-btn">Play Again?</button>
+       </div>
+     </div>
+     <!-- end story -->
+
+
+
+
+   </div>
+   <!-- scripts -->
+   <script src="https://code.jquery.com/jquery-1.10.2.js" integrity="sha256-it5nQKHTz+34HijZJQkpNBIHsjpV8b6QzMJs9tmOBSo=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+<script>
+$(function() {
+
+
+   // hide the story from view
+   $("#story").hide();
+
+
+   // Function to capitalize the first letter of a string
+   function capitalizeFirstLetter(string) {
+       return string.charAt(0).toUpperCase() + string.slice(1);
+   }
+
+
+   // ---- event handler ---- //
+   $("#btn-click").click(function(e) {
+
+
+       e.preventDefault();
+
+
+       // grab the values from the input boxes, capitalize them, then append them to the DOM
+       $(".noun").empty().append(capitalizeFirstLetter($("input.noun").val()));
+       $(".adjective").empty().append($("input.adjective").val());
+       $(".color").empty().append($("input.color").val());
+       $(".timeofday").empty().append($("input.timeofday").val());
+       $(".animal").empty().append($("input.animal").val());
+       $(".animal2").empty().append(capitalizeFirstLetter($("input.animal2").val())); $(".adjective4").empty().append($("input.adjective4").val());
+$(".adjective").empty().append($("input.adjective").val());
+
+       // show the story
+       $("#story").show();
+
+
+       // empty the form's values
+       $(':input').val('');
+
+
+       // hide the questions
+       $("#questions").hide();
+
+
+   });
+
+
+   // ---- event handler ---- //
+   $("#play-btn").click(function(e) {
+       $("#questions").show();
+       $("#story").hide();
+   });
+
+
+});
+</script>
+
+
+
+
+</body>
+</html>
+
